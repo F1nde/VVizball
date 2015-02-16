@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
 
     Rigidbody2D rbody;              // Reference to the rigidbody component
 
+	public ScrollingBackground scrollingBackground;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -19,7 +21,9 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate () 
     {
         if (Input.GetButtonDown("Gravity")) // TODO: Prevent player from changing this constantly
-            ChangeGravity();          
+            ChangeGravity();
+
+		Movement();
 	}
 
     void ChangeGravity()
@@ -27,5 +31,26 @@ public class PlayerController : MonoBehaviour {
         rbody.gravityScale *= -1;
         Debug.Log("Gravity changed!");
     }
+	
+	void Movement ()
+	{
+		if (Input.GetKey(KeyCode.W)) {
+			ChangeGravity();
+		}
+		
+		if (Input.GetKey(KeyCode.D)) {
+			transform.Translate(Vector2.right*4f*Time.deltaTime);
+			//scrollingBackground.move(true);
+		}
+
+		if (Input.GetKey(KeyCode.S)) {
+			ChangeGravity();
+		}
+
+		if (Input.GetKey(KeyCode.A)) {
+			transform.Translate(-Vector2.right*4f*Time.deltaTime);
+			//scrollingBackground.move(false);
+		}
+	}
 
 }
