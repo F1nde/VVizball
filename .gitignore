@@ -4,6 +4,6 @@
 *.pidb
 *.unityproj
 .DS_Store
-/WPTest/Library
-/WPTest/obj
-/WPTest/Temp
+/Library
+/obj
+/Temp
