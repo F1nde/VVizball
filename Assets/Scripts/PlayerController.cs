@@ -8,8 +8,6 @@ public class PlayerController : MonoBehaviour {
 
     Rigidbody2D rbody;              // Reference to the rigidbody component
 
-	public ScrollingBackground scrollingBackground;
-
 	// Use this for initialization
 	void Start () 
     {
@@ -40,7 +38,6 @@ public class PlayerController : MonoBehaviour {
 		
 		if (Input.GetKey(KeyCode.D)) {
             rbody.AddForce(Vector3.right * moveForce);
-			//scrollingBackground.move(true);
 		}
 
 		if (Input.GetKey(KeyCode.S)) {
@@ -49,7 +46,6 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.GetKey(KeyCode.A)) {
             rbody.AddForce(Vector3.left * moveForce);
-			//scrollingBackground.move(false);
 		}
 	}
 
