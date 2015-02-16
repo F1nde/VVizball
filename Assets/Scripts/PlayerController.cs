@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
     [Range(0, 15)]
-    public float addedForce;        // The amount of force added to the object
+    public float moveForce;        // The amount of force added to the object
 
     Rigidbody2D rbody;              // Reference to the rigidbody component
 
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		
 		if (Input.GetKey(KeyCode.D)) {
-			transform.Translate(Vector2.right*4f*Time.deltaTime);
+            rbody.AddForce(Vector3.right * moveForce);
 			//scrollingBackground.move(true);
 		}
 
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (Input.GetKey(KeyCode.A)) {
-			transform.Translate(-Vector2.right*4f*Time.deltaTime);
+            rbody.AddForce(Vector3.left * moveForce);
 			//scrollingBackground.move(false);
 		}
 	}
