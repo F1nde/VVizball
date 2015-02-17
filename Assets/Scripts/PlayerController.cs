@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour {
 	
 	void Movement ()
 	{
+		// WASD and regular keys included
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
 			ChangeGravity();
 		}
