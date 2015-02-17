@@ -32,19 +32,19 @@ public class PlayerController : MonoBehaviour {
 	
 	void Movement ()
 	{
-		if (Input.GetKey(KeyCode.W)) {
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
 			ChangeGravity();
 		}
 		
-		if (Input.GetKey(KeyCode.D)) {
+		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
             rbody.AddForce(Vector3.right * moveForce);
 		}
 
-		if (Input.GetKey(KeyCode.S)) {
+		if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
 			ChangeGravity();
 		}
 
-		if (Input.GetKey(KeyCode.A)) {
+		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
             rbody.AddForce(Vector3.left * moveForce);
 		}
 	}
