@@ -9,17 +9,41 @@ public class PlayerController : MonoBehaviour {
     Rigidbody2D rbody;              // Reference to the rigidbody component
     bool canChangeGravity = true;   // Whether the player is able to change gravity
 
+	public float defPlayerHealth;
+
+	public Transform newCheckpoint;
+
+	private Vector3 checkpoint;
+	private float playerHealth;
+	private bool hit;
+
 	// Use this for initialization
 	void Start () 
     {
         // Get reference to the rigidbody component in game object
         rbody = GetComponent<Rigidbody2D>();
+		playerHealth = defPlayerHealth;
+		checkpoint = new Vector3(0,0,0);
 	}
 	
 	// FixedUpdate is fixed to the framerate
 	void FixedUpdate () 
     {
 		Movement();
+
+		if(hit)
+		{
+			--playerHealth;
+
+			if(playerHealth == 0)
+			{
+				transform.position = checkpoint;
+				playerHealth = defPlayerHealth;
+				canChangeGravity = true;
+			}
+
+			hit = false;
+		}
 	}
 
     void ChangeGravity()
@@ -61,6 +85,23 @@ public class PlayerController : MonoBehaviour {
             Debug.Log("Player hit a platform!");
             canChangeGravity = true;
         }
+
+		// Damage player
+		if (collider.gameObject.tag == "Damage")
+		{
+			Debug.Log("Player took damage");
+			hit = true;
+			canChangeGravity = true;
+		}
+
+		// 
+		if (collider.gameObject.tag == "Checkpoint")
+		{
+			Debug.Log("Checkpoint!");
+			newCheckpoint = GetComponent<Transform>();
+			checkpoint = new Vector3(newCheckpoint.position.x, newCheckpoint.position.y + 3, newCheckpoint.position.z);
+			canChangeGravity = true;
+		}
     }
 
 }
