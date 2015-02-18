@@ -5,8 +5,8 @@ public class CameraController : MonoBehaviour
 {
 	public Transform Player;
 
-	public Vector2 Margin;
-	public Vector2 Smoothing;
+	public Vector2 margin;
+	public Vector2 smoothing;
 
 	public BoxCollider2D Bounds;
 
@@ -29,14 +29,14 @@ public class CameraController : MonoBehaviour
 
 		if(Follow)
 		{
-			if(Mathf.Abs(x - Player.position.x) > Margin.x)
+			if(Mathf.Abs(x - Player.position.x) > margin.x)
 			{
-				x = Mathf.Lerp(x, Player.position.x, Smoothing.x * Time.deltaTime);
+				x = Mathf.Lerp(x, Player.position.x, smoothing.x * Time.deltaTime);
 			}
 
-			if(Mathf.Abs(y - Player.position.y) > Margin.y)
+			if(Mathf.Abs(y - Player.position.y) > margin.y)
 			{
-				y = Mathf.Lerp(y, Player.position.y, Smoothing.y * Time.deltaTime);
+				y = Mathf.Lerp(y, Player.position.y, smoothing.y * Time.deltaTime);
 			}
 		}
 
@@ -45,6 +45,6 @@ public class CameraController : MonoBehaviour
 		x = Mathf.Clamp(x, min.x + cameraHalfWidth, max.x - cameraHalfWidth);
 		y = Mathf.Clamp(y, min.y + cameraHalfWidth, max.y - cameraHalfWidth);
 
-		transform.position = new Vector3 (x, y, transform.position.z);
+		transform.position = new Vector3(x, y, transform.position.z);
 	}
 }
