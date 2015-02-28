@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour {
 	private float playerHealth;
 	private bool hit;
 
+	public static int playerDeaths = 0;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour {
 				transform.position = checkpoint;
 				playerHealth = defPlayerHealth;
 				canChangeGravity = true;
+				++playerDeaths;
 			}
 
 			hit = false;
