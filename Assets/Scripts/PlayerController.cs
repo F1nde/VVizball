@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour {
 		// - WASD and regular keys included
         // - If you want to change these, go to Edit->Project Settings->Input
 
-        if (Input.GetButton("Gravity1") || Input.GetButton("Gravity2")){
+        if (Input.GetButton("Gravity1") || Input.GetButton("Gravity2")) {
 			ChangeGravity();
 		}
 
@@ -77,6 +77,13 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetButton("Left")) {
             rbody.AddForce(Vector3.left * moveForce);
+        }
+
+        // FOR DEBUGGING
+        if (Input.GetKey(KeyCode.L))
+        {
+            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+            gameManager.LoadNextLevel();
         }
 
 	}
