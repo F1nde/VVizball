@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
     {
         if ((level + 1) >= levels)
         {
-            Debug.Log("Error while loading level: " + (level + 1));
+            Debug.Log("Error while loading level " + (level + 1) + "! Is the level added to the build?");
             level = 0;
             Application.LoadLevel(level);
         }
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour {
     {
         if (level >= levels)
         {
-            Debug.Log("Error while loading level: " + level);
+            Debug.Log("Error while loading level: " + level + "! Is the level added to the build?");
             Application.LoadLevel(0);
         }
         else
