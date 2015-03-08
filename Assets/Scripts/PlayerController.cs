@@ -112,6 +112,13 @@ public class PlayerController : MonoBehaviour {
 			checkpoint = new Vector3(newCheckpoint.position.x, newCheckpoint.position.y + 3, newCheckpoint.position.z);
 			canChangeGravity = true;
 		}
+
+		// Player reaches the end of the level. Change level.
+		if (collider.gameObject.tag == "LevelEnd") {
+			Debug.Log ("Level end point");
+			GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+			gameManager.LoadNextLevel();
+		}
     }
 
 }
