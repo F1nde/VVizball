@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour {
 		// - WASD and regular keys included
         // - If you want to change these, go to Edit->Project Settings->Input
 
-        if (Input.GetButton("Gravity1") || Input.GetButton("Gravity2")){
+        if (Input.GetButton("Gravity1") || Input.GetButton("Gravity2")) {
 			ChangeGravity();
 		}
 
@@ -77,6 +77,13 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetButton("Left")) {
             rbody.AddForce(Vector3.left * moveForce);
+        }
+
+        // FOR DEBUGGING
+        if (Input.GetKey(KeyCode.L))
+        {
+            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+            gameManager.LoadNextLevel();
         }
 
 	}
@@ -104,6 +111,13 @@ public class PlayerController : MonoBehaviour {
 			newCheckpoint = GetComponent<Transform>();
 			checkpoint = new Vector3(newCheckpoint.position.x, newCheckpoint.position.y + 3, newCheckpoint.position.z);
 			canChangeGravity = true;
+		}
+
+		// Player reaches the end of the level. Change level.
+		if (collider.gameObject.tag == "LevelEnd") {
+			Debug.Log ("Level end point");
+			GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+			gameManager.LoadNextLevel();
 		}
     }
 
