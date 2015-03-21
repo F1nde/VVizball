@@ -4,7 +4,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null;
-    public int levels = 2;
+    public int levels = 3;
 
     private int level = 0; // TODO: Adjust this according to level numbers
 
