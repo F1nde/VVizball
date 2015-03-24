@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour {
         else
         {
             ++level;
+			Debug.Log ("Loading level " + level + " !");
             Application.LoadLevel(level);
         }
     }

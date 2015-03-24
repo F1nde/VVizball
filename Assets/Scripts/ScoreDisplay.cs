@@ -4,16 +4,20 @@ using UnityEngine.UI;
 
 public class ScoreDisplay : MonoBehaviour {
 
-	Text score;
+	Text time;
 	private double timer = 0.0;
 
 	void Start () {
-		score = gameObject.GetComponent<Text> ();
-		score.text = "Time: " + timer.ToString("0.00") + "s";
+		time = gameObject.GetComponent<Text> ();
+		time.text = "Time: " + timer.ToString("0.00") + "s";
 	}
 
 	void Update () {
 		timer += Time.deltaTime;
-		score.text = "Time: " + timer.ToString("0.00") + "s";
+		time.text = "Time: " + timer.ToString("0.00") + "s";
+	}
+
+	public double getTimer(){
+		return timer;
 	}
 }

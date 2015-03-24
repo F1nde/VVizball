@@ -150,8 +150,10 @@ public class PlayerController : MonoBehaviour {
 		// Player reaches the end of the level. Change level.
 		if (collider.gameObject.tag == "LevelEnd") {
 			Debug.Log ("Level end point");
-			GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-			gameManager.LoadNextLevel();
+			//GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+			//gameManager.LoadNextLevel();
+			LevelEndScript endScreen = GameObject.Find("EndScreen").GetComponent<LevelEndScript>();
+			endScreen.openEndScreen();
 		}
 
 		if (collider.gameObject.tag == "GravityLock")

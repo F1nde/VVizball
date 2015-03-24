@@ -18,4 +18,5 @@ public class DeathDisplay : MonoBehaviour {
 		deaths = PlayerController.playerDeaths;
 		deathCounter.text = "Deaths: " + deaths;
 	}
+
 }
