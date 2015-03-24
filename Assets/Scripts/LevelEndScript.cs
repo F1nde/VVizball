@@ -7,10 +7,13 @@ public class LevelEndScript : MonoBehaviour {
 	public GameObject Panel;
 	public Text Deaths;
 	public Text Timer;
+	PauseScript pause;
 	
 	// Use this for initialization
 	void Start () {
 		Panel.gameObject.SetActive(false);
+		pause = GameObject.Find("PauseMenu").GetComponent<PauseScript> ();
+		Debug.Log (pause == null);
 	}
 	
 	// Update is called once per frame
@@ -24,14 +27,16 @@ public class LevelEndScript : MonoBehaviour {
 		Timer.text = "Time: " + GameObject.Find("Score").GetComponent<ScoreDisplay>().getTimer().ToString("0.00") + "s";
 		Panel.gameObject.SetActive (true);
 		Time.timeScale = 0;
+		pause.setEnabled (false);
 	}
 
-	//Loads the next l evel and continues time
+	//Loads the next level and continues time
 	public void nextLevel() {
 		Panel.gameObject.SetActive(false);
 		Time.timeScale = 1;
 		GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		gameManager.LoadNextLevel();
+		pause.setEnabled (true);
 	}
 	
 	public void exit() {
