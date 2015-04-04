@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour {
 
 	public static int playerDeaths = 0;
 
+	public static int playerScore = 0;
+
 	public BoxCollider2D Bounds;
 
 	private Vector3 min;
@@ -161,5 +163,12 @@ public class PlayerController : MonoBehaviour {
 			Debug.Log("Gravity locked");
 			canChangeGravity = false;
 		}
+
+		/*if (collider.gameObject.tag == "Powerup") 
+		{
+			Debug.Log("Player collected powerup!");
+			collider.gameObject.GetComponent<Powerup>().collect();
+			DestroyObject(collider.gameObject);
+		}*/
     }
 }
