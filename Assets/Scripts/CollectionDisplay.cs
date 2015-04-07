@@ -24,6 +24,12 @@ public class CollectionDisplay : MonoBehaviour
 		// Get score from player
 		score = PlayerController.playerScore;
 		collection.text = "Score: " + score.ToString ();
+		string powerups = PlayerController.getPowerupDuration();
+		if (powerups != null) 
+		{
+			collection.text += "\nPowerup time: " + powerups;
+		}
+
 	}
 }
 

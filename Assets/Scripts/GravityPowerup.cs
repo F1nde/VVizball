@@ -4,14 +4,14 @@
 using UnityEngine;
 using System.Collections;
 
-public class BasicCollectible : Powerup
+public class GravityPowerup : Powerup
 {
-	private int scoreValue; // Score gained when collected
+	private float durationSecs;
 
 	// Use this for initialization
 	void Start ()
 	{
-		scoreValue = 1; // Decide a proper value
+		durationSecs = 10.0f; // Decide a proper value
 	}
 	
 	// Update is called once per frame
@@ -24,8 +24,7 @@ public class BasicCollectible : Powerup
 	public override void collect()
 	{
 		base.collect ();
-		PlayerController.playerScore += scoreValue;
+		PlayerController.collectPowerup ("gravity", durationSecs);
 	}
-	
 }
 

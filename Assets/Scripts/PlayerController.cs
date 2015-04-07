@@ -22,6 +22,13 @@ public class PlayerController : MonoBehaviour {
 
 	public static int playerScore = 0;
 
+	// Powerups
+	private static double timeGravity = 0.0;
+	private static bool constantGravityChange = false;
+	private static double timeSlowMotion = 0.0;
+	private static bool slowMotion = false;
+
+
 	public BoxCollider2D Bounds;
 
 	private Vector3 min;
@@ -70,11 +77,23 @@ public class PlayerController : MonoBehaviour {
 
 			hit = false;
 		}
+
+		timeGravity -= Time.deltaTime;
+		if (timeGravity < 0.0) 
+		{
+			constantGravityChange = false;
+		}
+		timeSlowMotion -= Time.deltaTime;
+		if (timeSlowMotion < 0.0) 
+		{
+			slowMotion = false;
+			Time.timeScale = 1;
+		}
 	}
 
     void ChangeGravity()
     {
-        if (canChangeGravity)
+        if (canChangeGravity || constantGravityChange)
         {
             rbody.gravityScale *= -1;
             canChangeGravity = false;
@@ -164,11 +183,35 @@ public class PlayerController : MonoBehaviour {
 			canChangeGravity = false;
 		}
 
-		/*if (collider.gameObject.tag == "Powerup") 
-		{
-			Debug.Log("Player collected powerup!");
-			collider.gameObject.GetComponent<Powerup>().collect();
-			DestroyObject(collider.gameObject);
-		}*/
     }
+
+	public static void collectPowerup(string type, float duration)
+	{
+		if (type == "gravity") {
+			Debug.Log ("Gravity unlocked by powerup");
+			constantGravityChange = true;
+			timeGravity = duration;
+		} else if (type == "time") {
+			Debug.Log ("Slow motion by powerup");
+			Time.timeScale = 0.5f;
+			slowMotion = true;
+			timeSlowMotion = duration;
+		}
+	}
+
+	public static string getPowerupDuration()
+	{
+		if (constantGravityChange) 
+		{
+			Debug.Log (timeGravity.ToString ("0.00") + "s");
+			return timeGravity.ToString ("0.00") + "s";
+		}
+		if (slowMotion) 
+		{
+			Debug.Log (timeSlowMotion.ToString ("0.00") + "s");
+			return timeSlowMotion.ToString ("0.00") + "s";
+		}
+
+		return null;
+	}
 }
