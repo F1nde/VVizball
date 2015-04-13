@@ -12,9 +12,8 @@ public class PlayerController : MonoBehaviour {
 
 	public float defPlayerHealth;
 
-	public Transform newCheckpoint;
+	public LevelManager Lmanager;
 
-	private Vector3 checkpoint;
 	private float playerHealth;
 	private bool hit;
 
@@ -40,7 +39,6 @@ public class PlayerController : MonoBehaviour {
         // Get reference to the rigidbody component in game object
         rbody = GetComponent<Rigidbody2D>();
 		playerHealth = defPlayerHealth;
-		checkpoint = new Vector3(0,0,0);
 
 		min = Bounds.bounds.min;
 		max = Bounds.bounds.max;
@@ -69,7 +67,8 @@ public class PlayerController : MonoBehaviour {
 
 			if(playerHealth == 0)
 			{
-				transform.position = checkpoint;
+				transform.position = Lmanager.currentCheckpoint();
+				//transform.position = checkpoint;
 				playerHealth = defPlayerHealth;
 				canChangeGravity = true;
 				++playerDeaths;
@@ -151,7 +150,7 @@ public class PlayerController : MonoBehaviour {
 			canChangeGravity = true;
 		}
 
-		// 
+		/*
 		if (collider.gameObject.tag == "CheckpointUp")
 		{
 			Debug.Log("Checkpoint!");
@@ -167,6 +166,7 @@ public class PlayerController : MonoBehaviour {
 			checkpoint = new Vector3(newCheckpoint.position.x, newCheckpoint.position.y - 3, newCheckpoint.position.z);
 			canChangeGravity = true;
 		}
+		*/
 
 		// Player reaches the end of the level. Change level.
 		if (collider.gameObject.tag == "LevelEnd") {

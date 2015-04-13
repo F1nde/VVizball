@@ -15,11 +15,6 @@ public class LevelEndScript : MonoBehaviour {
 		pause = GameObject.Find("PauseMenu").GetComponent<PauseScript> ();
 		Debug.Log (pause == null);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		//nothing to update
-	}
 
 	//Opens the endscreen and displays current time and deaths in this level.
 	public void openEndScreen() {
