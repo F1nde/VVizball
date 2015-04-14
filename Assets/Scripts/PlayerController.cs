@@ -67,8 +67,9 @@ public class PlayerController : MonoBehaviour {
 
 			if(playerHealth == 0)
 			{
-				transform.position = Lmanager.currentCheckpoint();
-				//transform.position = checkpoint;
+				// Get current checkpoint
+				transform.position = Lmanager.CurrentCheckpoint();
+
 				playerHealth = defPlayerHealth;
 				canChangeGravity = true;
 				++playerDeaths;
@@ -121,11 +122,19 @@ public class PlayerController : MonoBehaviour {
         }
 
         // FOR DEBUGGING
-        if (Input.GetKey(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             gameManager.LoadNextLevel();
         }
+
+		// FOR DEBUGGING
+		if (Input.GetKeyDown(KeyCode.Backspace))
+		{
+			// Moves player to next checkpoint
+			transform.position = Lmanager.NextCheckpoint();
+			rbody.velocity = rbody.velocity.normalized * 0;
+		}
 
 		// Check player's max speed
 		if(rbody.velocity.magnitude > maxSpeed)
@@ -149,24 +158,6 @@ public class PlayerController : MonoBehaviour {
 			hit = true;
 			canChangeGravity = true;
 		}
-
-		/*
-		if (collider.gameObject.tag == "CheckpointUp")
-		{
-			Debug.Log("Checkpoint!");
-			newCheckpoint = GetComponent<Transform>();
-			checkpoint = new Vector3(newCheckpoint.position.x, newCheckpoint.position.y + 3, newCheckpoint.position.z);
-			canChangeGravity = true;
-		}
-
-		if (collider.gameObject.tag == "CheckpointDown")
-		{
-			Debug.Log("Checkpoint!");
-			newCheckpoint = GetComponent<Transform>();
-			checkpoint = new Vector3(newCheckpoint.position.x, newCheckpoint.position.y - 3, newCheckpoint.position.z);
-			canChangeGravity = true;
-		}
-		*/
 
 		// Player reaches the end of the level. Change level.
 		if (collider.gameObject.tag == "LevelEnd") {

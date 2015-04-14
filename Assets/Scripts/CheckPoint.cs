@@ -10,6 +10,11 @@ public class CheckPoint : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		Debug.Log("Checkpoint!");
-		Lmanager.newCheckpoint(playerSpawnPoint.position);
+		Lmanager.NewCheckpoint(playerSpawnPoint.position);
+	}
+
+	public Vector3 Position()
+	{
+		return transform.position;
 	}
 }

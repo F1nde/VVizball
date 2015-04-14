@@ -6,17 +6,11 @@ using System.Collections;
 
 public class Powerup : MonoBehaviour
 {
+	private bool state;
 
-	// Use this for initialization
 	void Start ()
 	{
-
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	
+		state = true;
 	}
 
 	// Do things when collected
@@ -30,8 +24,18 @@ public class Powerup : MonoBehaviour
 	{
 		Debug.Log ("Player collected a powerup!");
 		collect ();
-		DestroyObject (this);
+		state = false;
+		//DestroyObject (this);
 	}
-	
+
+	public void Reset()
+	{
+		if (!state)
+		{
+			renderer.enabled = true;
+			collider2D.enabled = true;
+			state = true;
+		}
+	}
 }
 
