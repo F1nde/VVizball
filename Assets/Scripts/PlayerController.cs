@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour {
 	private float playerHealth;
 	private bool hit;
 
+	public bool gravity;
+
 	public static int playerDeaths = 0;
 
 	public static int playerScore = 0;
@@ -26,6 +28,8 @@ public class PlayerController : MonoBehaviour {
 	private static bool constantGravityChange = false;
 	private static double timeSlowMotion = 0.0;
 	private static bool slowMotion = false;
+	private static double timeInvulnerability = 0.0;
+	private static bool invulnerability = false;
 
 
 	public BoxCollider2D Bounds;
@@ -39,6 +43,7 @@ public class PlayerController : MonoBehaviour {
         // Get reference to the rigidbody component in game object
         rbody = GetComponent<Rigidbody2D>();
 		playerHealth = defPlayerHealth;
+		gravity = true;
 
 		min = Bounds.bounds.min;
 		max = Bounds.bounds.max;
@@ -63,7 +68,10 @@ public class PlayerController : MonoBehaviour {
 
 		if(hit)
 		{
-			--playerHealth;
+			if(invulnerability == false)
+			{
+				--playerHealth;
+			}
 
 			if(playerHealth == 0)
 			{
@@ -89,6 +97,11 @@ public class PlayerController : MonoBehaviour {
 			slowMotion = false;
 			Time.timeScale = 1;
 		}
+		timeInvulnerability -= Time.deltaTime;
+		if (timeInvulnerability < 0.0) 
+		{
+			invulnerability = false;
+		}
 	}
 
     void ChangeGravity()
@@ -97,8 +110,10 @@ public class PlayerController : MonoBehaviour {
         {
             rbody.gravityScale *= -1;
             canChangeGravity = false;
-        }
-
+			gravity = (!gravity);
+			//Lmanager.GravityChange();
+		}
+		
         Debug.Log("Gravity changed!");
     }
 	
@@ -187,6 +202,10 @@ public class PlayerController : MonoBehaviour {
 			Time.timeScale = 0.5f;
 			slowMotion = true;
 			timeSlowMotion = duration;
+		} else if (type == "invulnerability") {
+			Debug.Log ("Invulnerability by powerup");
+			invulnerability = true;
+			timeInvulnerability = duration;
 		}
 	}
 
@@ -202,7 +221,12 @@ public class PlayerController : MonoBehaviour {
 			Debug.Log (timeSlowMotion.ToString ("0.00") + "s");
 			return timeSlowMotion.ToString ("0.00") + "s";
 		}
-
+		if (invulnerability) 
+		{
+			Debug.Log (timeSlowMotion.ToString ("0.00") + "s");
+			return timeInvulnerability.ToString ("0.00") + "s";
+		}
+		
 		return null;
 	}
 }

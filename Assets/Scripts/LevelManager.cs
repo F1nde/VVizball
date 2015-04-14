@@ -4,20 +4,33 @@ using System.Collections;
 public class LevelManager : MonoBehaviour {
 
 	private Vector3 playerSpawnPoint;
-
+	
 	public Powerup[] powerups;
-
+	public MovingPlatforms[] platforms;
 	public CheckPoint[] checkpoints;
 	public int next;
 
+	private bool gravity;
+
+	public PlayerController player;
 	public Transform mapStart;
 
 	void Start () 
 	{
 		playerSpawnPoint = mapStart.position;
 		next = 0;
+		gravity = true;
 	}
 
+	void FixedUpdate()
+	{
+		if (player.gravity != gravity)
+		{
+			GravityChange();
+			gravity = (!gravity);
+		}
+	}
+		
 	// Checkpoints
 
 	public void NewCheckpoint(Vector3 checkPoint)
@@ -65,5 +78,14 @@ public class LevelManager : MonoBehaviour {
 			powerups[i].Reset();		
 		}
 	}
-	
+
+	// Platforms
+
+	public void GravityChange()
+	{
+		for (var i = 0; i < platforms.Length; ++i)
+		{
+			platforms[i].GravityChange();
+		}
+	}
 }

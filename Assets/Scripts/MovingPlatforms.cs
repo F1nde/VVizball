@@ -8,6 +8,8 @@ public class MovingPlatforms : MonoBehaviour {
 	public Transform platform;
 
 	public float platformSpeed;
+
+	public bool gravity;
 	
 	Vector3 direction;
 	Transform destination;
@@ -19,11 +21,21 @@ public class MovingPlatforms : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		platform.rigidbody2D.MovePosition(platform.position + direction * platformSpeed * Time.fixedDeltaTime);
-
-		if (Vector3.Distance (platform.position, destination.position) < platformSpeed * Time.fixedDeltaTime)
+		if (gravity == false)
 		{
-			SetDestination(destination == startPoint ? endPoint: startPoint);
+			platform.rigidbody2D.MovePosition(platform.position + direction * platformSpeed * Time.fixedDeltaTime);
+
+			if (Vector3.Distance (platform.position, destination.position) < platformSpeed * Time.fixedDeltaTime)
+			{
+				SetDestination (destination == startPoint ? endPoint : startPoint);
+			}
+		}
+		else
+		{
+			if (Vector3.Distance (platform.position, destination.position) > platformSpeed * Time.fixedDeltaTime)
+			{
+				platform.rigidbody2D.MovePosition(platform.position + direction * platformSpeed * Time.fixedDeltaTime);
+			}
 		}
 	}
 	
@@ -37,5 +49,10 @@ public class MovingPlatforms : MonoBehaviour {
 	{
 		destination = dest;
 		direction = (destination.position - platform.position).normalized;
+	}
+
+	public void GravityChange()
+	{
+		SetDestination (destination == startPoint ? endPoint : startPoint);
 	}
 }
