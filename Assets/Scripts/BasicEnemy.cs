@@ -1,33 +1,32 @@
-// TIE-21106 Software Engineering Methodology, 2015
-// Roni Jaakkola, Marko Tuominen, Jaakko Husso, Noora Männikkö, 2015
-
 using UnityEngine;
 using System.Collections;
 
-public class Powerup : MonoBehaviour
+public class BasicEnemy : MonoBehaviour
 {
-	private bool state;
+	bool state;
 
+	// Use this for initialization
 	void Start ()
 	{
 		state = true;
 	}
 
-	// Do things when collected
-	public virtual void collect()
+	// Remove when dead
+	public void killEnemy()
 	{
 		renderer.enabled = false;
 		collider2D.enabled = false;
 	}
-
+	
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		Debug.Log ("Player collected a powerup!");
-		collect ();
+		Debug.Log ("Player hit an enemy!");
+		if (PlayerController.hitEnemy ()) {
+			killEnemy ();
+		}
 		state = false;
-		//DestroyObject (this);
 	}
-
+	
 	public void Reset()
 	{
 		if (!state)

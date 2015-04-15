@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿// TIE-21106 Software Engineering Methodology, 2015
+// Roni Jaakkola, Marko Tuominen, Jaakko Husso, Noora Männikkö, 2015
+
+using UnityEngine;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -15,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 	public LevelManager Lmanager;
 
 	private float playerHealth;
-	private bool hit;
+	private static bool hit;
 
 	public bool gravity;
 
@@ -81,6 +84,13 @@ public class PlayerController : MonoBehaviour {
 				playerHealth = defPlayerHealth;
 				canChangeGravity = true;
 				++playerDeaths;
+
+				timeGravity = 0.0;
+				constantGravityChange = false;
+				timeSlowMotion = 0.0;
+				slowMotion = false;
+				timeInvulnerability = 0.0;
+				invulnerability = false;
 			}
 
 			hit = false;
@@ -228,5 +238,19 @@ public class PlayerController : MonoBehaviour {
 		}
 		
 		return null;
+	}
+
+	public static bool hitEnemy() 
+	{
+		Debug.Log ("Player hit");
+		if (invulnerability) {
+			playerScore += 1; // add score
+			// kill enemy
+			return true;
+		} else {
+			// Player dies
+			hit = true;
+			return false;
+		}
 	}
 }

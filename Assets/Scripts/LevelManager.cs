@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿// TIE-21106 Software Engineering Methodology, 2015
+// Roni Jaakkola, Marko Tuominen, Jaakko Husso, Noora Männikkö, 2015
+
+using UnityEngine;
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
@@ -8,6 +11,8 @@ public class LevelManager : MonoBehaviour {
 	public Powerup[] powerups;
 	public MovingPlatforms[] platforms;
 	public CheckPoint[] checkpoints;
+	public MoveEnemy[] enemies;
+	public BasicEnemy[] enemyObjects;
 	public int next;
 
 	private bool gravity;
@@ -88,4 +93,18 @@ public class LevelManager : MonoBehaviour {
 			platforms[i].GravityChange();
 		}
 	}
+
+	// Enemies
+	void ResetEnemies()
+	{
+		for (var i = 0; i < enemies.Length; ++i) 
+		{
+			enemies[i].Reset();
+		}
+		for (var j = 0; j < enemyObjects.Length; ++j) 
+		{
+			enemyObjects[j].Reset();
+		}
+	}
+
 }
