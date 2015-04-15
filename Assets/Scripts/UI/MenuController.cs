@@ -1,21 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour {
 
     GameManager gameManager;
+    Leaderboard leaderboard;
 
     public GameObject highscoresPanel;
     private bool scoresOpen = false;
+    public Text scores;
 
     public GameObject settingsPanel;
     private bool settingsOpen = false;
-
 
 	// Use this for initialization
 	void Start () 
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        leaderboard = GameObject.Find("GameManager").GetComponent<Leaderboard>();
 	}
 
     public void LoadLevel(int level)
@@ -30,6 +33,9 @@ public class MenuController : MonoBehaviour {
             Debug.Log("Opening Highscores panel.");
             highscoresPanel.SetActive(true);
             scoresOpen = true;
+            scores.text = "Loading...";
+
+            StartCoroutine(leaderboard.GetTimes(1, scores));
         }
         else
         {
