@@ -11,12 +11,12 @@ public class Leaderboard : MonoBehaviour {
     public string submitTimeUrl = "https://unity-leaderboard.herokuapp.com/submit/";
     public string getTimesUrl = "https://unity-leaderboard.herokuapp.com/times";
 
-    public IEnumerator PostTime(string player, int level, int time)
+    public IEnumerator PostTime(string player, int level, double time, Text textToUpdate)
     {
         string postUrl = submitTimeUrl + level;
         WWWForm form = new WWWForm();
         form.AddField("name", player);
-        form.AddField("time", time);
+        form.AddField("time", (int)time);
 
         WWW response = new WWW(postUrl, form.data);
         yield return response;
@@ -28,6 +28,7 @@ public class Leaderboard : MonoBehaviour {
         else
         {
             Debug.Log("Time submitted to highscores!");
+            textToUpdate.text = "Time submitted!";
         }
     }
 

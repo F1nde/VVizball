@@ -6,16 +6,23 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class LevelEndScript : MonoBehaviour {
+
+    public Leaderboard leaderboard;
 	
 	public GameObject Panel;
 	public Text Deaths;
 	public Text Timer;
 	PauseScript pause;
+
+    public Text inputField;
+    public Text doneText;
+    private bool timeSubmitted = false;
 	
 	// Use this for initialization
 	void Start () {
 		Panel.gameObject.SetActive(false);
 		pause = GameObject.Find("PauseMenu").GetComponent<PauseScript> ();
+        leaderboard = GameObject.Find("GameManager").GetComponent<Leaderboard>();
 		Debug.Log (pause == null);
 	}
 
@@ -36,6 +43,15 @@ public class LevelEndScript : MonoBehaviour {
 		gameManager.LoadNextLevel();
 		pause.setEnabled (true);
 	}
+
+    public void submitTime() {
+        timeSubmitted = true;
+        string name = inputField.text;
+        double time = GameObject.Find("Score").GetComponent<ScoreDisplay>().getTimer();
+
+        doneText.text = "Sending..";
+        StartCoroutine(leaderboard.PostTime(name, 1, time, doneText));
+    }
 	
 	public void exit() {
 		Application.Quit ();
