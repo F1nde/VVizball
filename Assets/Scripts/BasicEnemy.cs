@@ -1,5 +1,5 @@
 // TIE-21106 Software Engineering Methodology, 2015
-// Roni Jaakkola, Marko Tuominen, Noora Männikkö, 2015
+// Roni Jaakkola, Marko Tuominen, Jaakko Husso, Noora Männikkö, 2015
 
 using UnityEngine;
 using System.Collections;
@@ -23,11 +23,13 @@ public class BasicEnemy : MonoBehaviour
 	
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		Debug.Log ("Player hit an enemy!");
-		if (PlayerController.hitEnemy ()) {
-			killEnemy ();
+		if (other.name == "Player"){
+			Debug.Log ("Player hit an enemy!");
+			if (PlayerController.hitEnemy ()) {
+				killEnemy ();
+			}
+			state = false;
 		}
-		state = false;
 	}
 	
 	public void Reset()
