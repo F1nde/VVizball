@@ -160,8 +160,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="15.796092"
-     inkscape:cx="496.05324"
-     inkscape:cy="534.43128"
+     inkscape:cx="506.02768"
+     inkscape:cy="596.07495"
      inkscape:current-layer="layer6"
      inkscape:document-units="px"
      showgrid="false"
@@ -3783,5 +3783,64 @@
        id="circle4999"
        style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
        transform="matrix(0,1,-1,0,0,0)" />
+    <rect
+       style="opacity:1;fill:#be3d3d;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect5001"
+       width="36.707027"
+       height="34.558323"
+       x="475.97427"
+       y="574.70087" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect5003"
+       width="1.5219986"
+       height="12.84746"
+       x="490.44168"
+       y="581.53143"
+       inkscape:export-xdpi="2478.3938"
+       inkscape:export-ydpi="2478.3938" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect5005"
+       width="2.2382333"
+       height="0.98482263"
+       x="488.56155"
+       y="582.06854"
+       inkscape:export-xdpi="2478.3938"
+       inkscape:export-ydpi="2478.3938" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect5007"
+       width="1.1638813"
+       height="2.4172919"
+       x="489.54639"
+       y="582.51617"
+       inkscape:export-xdpi="2478.3938"
+       inkscape:export-ydpi="2478.3938" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect5009"
+       width="1.7010573"
+       height="0.62670529"
+       x="488.94208"
+       y="583.4339"
+       inkscape:export-xdpi="2478.3938"
+       inkscape:export-ydpi="2478.3938" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect5011"
+       width="2.2382333"
+       height="0.80576396"
+       x="488.7406"
+       y="584.3739"
+       inkscape:export-xdpi="2478.3938"
+       inkscape:export-ydpi="2478.3938" />
+    <path
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 491.19475,593.19846 a 3.2445324,3.2445324 0 0 0 -3.24386,3.24601 3.2445324,3.2445324 0 0 0 3.24386,3.24387 3.2445324,3.2445324 0 0 0 3.24386,-3.24387 3.2445324,3.2445324 0 0 0 -3.24386,-3.24601 z m -0.0342,1.31896 a 1.9605997,1.9605997 0 0 1 1.95916,1.96131 1.9605997,1.9605997 0 0 1 -1.95916,1.9613 1.9605997,1.9605997 0 0 1 -1.96131,-1.9613 1.9605997,1.9605997 0 0 1 1.96131,-1.96131 z"
+       id="path5013"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="2478.3938"
+       inkscape:export-ydpi="2478.3938" />
   </g>
 </svg>

@@ -1,5 +1,5 @@
 ﻿// TIE-21106 Software Engineering Methodology, 2015
-// Roni Jaakkola, Marko Tuominen, Noora Männikkö, 2015
+// Roni Jaakkola, Marko Tuominen, Jaakko Husso, Noora Männikkö, 2015
 
 using UnityEngine;
 using System.Collections;
@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
     public int levels = 3;
 
-    private int level = 0; // TODO: Adjust this according to level numbers
+    private int level = 1; // TODO: Adjust this according to level numbers - Cadiac adjusted this before demo 
 
 	// Use this for initialization
 	void Awake () 
