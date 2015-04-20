@@ -11,8 +11,9 @@ public class LevelManager : MonoBehaviour {
 	public Powerup[] powerups;
 	public MovingPlatforms[] platforms;
 	public CheckPoint[] checkpoints;
-	public MoveEnemy[] enemies;
+	//public MoveEnemy[] enemies;
 	public BasicEnemy[] enemyObjects;
+	public AdvancedEnemy[] advEnemyObjects;
 	public int next;
 
 	private bool gravity;
@@ -50,6 +51,7 @@ public class LevelManager : MonoBehaviour {
 	public Vector3 CurrentCheckpoint()
 	{
 		ResetPowerups();
+		ResetEnemies();
 		return playerSpawnPoint;
 	}
 
@@ -71,6 +73,7 @@ public class LevelManager : MonoBehaviour {
 
 		playerSpawnPoint = checkpoints[next].Position();
 		ResetPowerups();
+		ResetEnemies();
 		return playerSpawnPoint;
 	}
 
@@ -97,13 +100,17 @@ public class LevelManager : MonoBehaviour {
 	// Enemies
 	void ResetEnemies()
 	{
-		for (var i = 0; i < enemies.Length; ++i) 
+		/*for (var i = 0; i < enemies.Length; ++i) 
 		{
 			enemies[i].Reset();
-		}
+		}*/
 		for (var j = 0; j < enemyObjects.Length; ++j) 
 		{
 			enemyObjects[j].Reset();
+		}
+		for (var j = 0; j < advEnemyObjects.Length; ++j) 
+		{
+			advEnemyObjects[j].Reset();
 		}
 	}
 

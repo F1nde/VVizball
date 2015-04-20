@@ -15,12 +15,12 @@ public class MoveEnemy : MonoBehaviour
 
 	Vector3 direction;
 
-	bool state;
+	//bool state;
 
 	// Use this for initialization
 	void Start ()
 	{
-		state = true;
+		//state = true;
 		speed = 5f;
 		setDestination (endPoint);
 	}
@@ -52,7 +52,8 @@ public class MoveEnemy : MonoBehaviour
 		setDestination (destination == startPoint ? endPoint : startPoint);
 	}
 
-	public void Reset()
+	// Not actually ever called, lets just get rid of this.
+	/*public void Reset()
 	{
 		if (!state)
 		{
@@ -60,5 +61,6 @@ public class MoveEnemy : MonoBehaviour
 			state = true;
 		}
 	}
+	*/
 }
 

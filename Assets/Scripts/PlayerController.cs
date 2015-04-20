@@ -223,17 +223,17 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (constantGravityChange) 
 		{
-			Debug.Log (timeGravity.ToString ("0.00") + "s");
+			//Debug.Log (timeGravity.ToString ("0.00") + "s");
 			return timeGravity.ToString ("0.00") + "s";
 		}
 		if (slowMotion) 
 		{
-			Debug.Log (timeSlowMotion.ToString ("0.00") + "s");
+			//Debug.Log (timeSlowMotion.ToString ("0.00") + "s");
 			return timeSlowMotion.ToString ("0.00") + "s";
 		}
 		if (invulnerability) 
 		{
-			Debug.Log (timeSlowMotion.ToString ("0.00") + "s");
+			//Debug.Log (timeSlowMotion.ToString ("0.00") + "s");
 			return timeInvulnerability.ToString ("0.00") + "s";
 		}
 		

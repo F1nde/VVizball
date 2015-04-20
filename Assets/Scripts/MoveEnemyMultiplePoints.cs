@@ -15,12 +15,12 @@ public class MoveEnemyMultiplePoints : MonoBehaviour
 	int currentPoint = 0;
 	Vector3 direction;
 
-	bool state;
+	//bool state;
 
 	// Use this for initialization
 	void Start ()
 	{
-		state = true;
+		//state = true;
 		currentPoint = 0;
 		//Always sets destination to next point
 		setDestination ();
@@ -54,7 +54,7 @@ public class MoveEnemyMultiplePoints : MonoBehaviour
 		setDestination ();
 	}
 
-	public void Reset()
+	/*public void Reset()
 	{
 		if (!state)
 		{
@@ -63,5 +63,6 @@ public class MoveEnemyMultiplePoints : MonoBehaviour
 			state = true;
 		}
 	}
+	*/
 }
 
