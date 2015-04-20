@@ -3,6 +3,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerController : MonoBehaviour {
 
@@ -34,6 +35,8 @@ public class PlayerController : MonoBehaviour {
 	private static double timeInvulnerability = 0.0;
 	private static bool invulnerability = false;
 
+	private static SpriteRenderer srenderer;
+
 
 	public BoxCollider2D Bounds;
 
@@ -50,6 +53,8 @@ public class PlayerController : MonoBehaviour {
 
 		min = Bounds.bounds.min;
 		max = Bounds.bounds.max;
+
+		srenderer = GetComponent<SpriteRenderer> ();
 	}
 	
 	// FixedUpdate is fixed to the framerate
@@ -100,17 +105,23 @@ public class PlayerController : MonoBehaviour {
 		if (timeGravity < 0.0) 
 		{
 			constantGravityChange = false;
+			if (!slowMotion && !invulnerability)
+				srenderer.color = new Color(1, 1, 1, 1); // white
 		}
 		timeSlowMotion -= Time.deltaTime;
 		if (timeSlowMotion < 0.0) 
 		{
 			slowMotion = false;
 			Time.timeScale = 1;
+			if (!constantGravityChange && !invulnerability)
+				srenderer.color = new Color(1, 1, 1, 1); // white
 		}
 		timeInvulnerability -= Time.deltaTime;
 		if (timeInvulnerability < 0.0) 
 		{
 			invulnerability = false;
+			if (!slowMotion && !constantGravityChange)
+				srenderer.color = new Color(1, 1, 1, 1); // white
 		}
 	}
 
@@ -201,40 +212,33 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-	public static void collectPowerup(string type, float duration)
+	public static void collectPowerup(string type, float duration, Color color)
 	{
+		Debug.Log (color);
 		if (type == "gravity") {
 			Debug.Log ("Gravity unlocked by powerup");
 			constantGravityChange = true;
 			timeGravity = duration;
+			srenderer.color = color;
 		} else if (type == "time") {
 			Debug.Log ("Slow motion by powerup");
 			Time.timeScale = 0.5f;
 			slowMotion = true;
 			timeSlowMotion = duration;
+			srenderer.color = color;
 		} else if (type == "invulnerability") {
 			Debug.Log ("Invulnerability by powerup");
 			invulnerability = true;
 			timeInvulnerability = duration;
+			srenderer.color = color;
 		}
 	}
 
 	public static string getPowerupDuration()
 	{
-		if (constantGravityChange) 
+		if (constantGravityChange || slowMotion || invulnerability) 
 		{
-			//Debug.Log (timeGravity.ToString ("0.00") + "s");
-			return timeGravity.ToString ("0.00") + "s";
-		}
-		if (slowMotion) 
-		{
-			//Debug.Log (timeSlowMotion.ToString ("0.00") + "s");
-			return timeSlowMotion.ToString ("0.00") + "s";
-		}
-		if (invulnerability) 
-		{
-			//Debug.Log (timeSlowMotion.ToString ("0.00") + "s");
-			return timeInvulnerability.ToString ("0.00") + "s";
+			return Math.Max (timeGravity, Math.Max(timeSlowMotion, timeInvulnerability)).ToString ("0.00") + "s";
 		}
 		
 		return null;

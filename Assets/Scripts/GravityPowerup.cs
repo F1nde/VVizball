@@ -7,11 +7,13 @@ using System.Collections;
 public class GravityPowerup : Powerup
 {
 	private float durationSecs;
+	private SpriteRenderer srenderer;
 
 	// Use this for initialization
 	void Start ()
 	{
 		durationSecs = 10.0f; // Decide a proper value
+		srenderer = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -24,7 +26,7 @@ public class GravityPowerup : Powerup
 	public override void collect()
 	{
 		base.collect ();
-		PlayerController.collectPowerup ("gravity", durationSecs);
+		PlayerController.collectPowerup ("gravity", durationSecs, srenderer.color);
 	}
 }
 

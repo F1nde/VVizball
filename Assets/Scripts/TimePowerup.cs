@@ -7,11 +7,13 @@ using System.Collections;
 public class TimePowerup : Powerup
 {
 	private float durationSecs;
+	private SpriteRenderer srenderer;
 
 	// Use this for initialization
 	void Start ()
 	{
 		durationSecs = 5.0f; // Decide a proper value
+		srenderer = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -24,7 +26,7 @@ public class TimePowerup : Powerup
 	public override void collect()
 	{
 		base.collect ();
-		PlayerController.collectPowerup ("time", durationSecs);
+		PlayerController.collectPowerup ("time", durationSecs, srenderer.color);
 	}
 }
 
