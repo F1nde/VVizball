@@ -1,5 +1,5 @@
 // TIE-21106 Software Engineering Methodology, 2015
-// Roni Jaakkola, Marko Tuominen, Noora Männikkö, 2015
+// Roni Jaakkola, Marko Tuominen, Jaakko Husso, Noora Männikkö, 2015
 
 using UnityEngine;
 using System.Collections;
@@ -29,8 +29,9 @@ public class MoveEnemy : MonoBehaviour
 	void FixedUpdate ()
 	{
 		//enemy.rigidbody2D.MovePosition(enemy.position + direction * speed * Time.fixedDeltaTime);
-		enemy.Translate (direction.x * speed * Time.fixedDeltaTime, 0, 0);
-		
+
+		enemy.Rotate (Vector3.forward * Time.deltaTime * 360);
+		enemy.Translate (new Vector3(direction.x * speed * Time.fixedDeltaTime,0,0), Space.World);
 		if (Vector3.Distance (enemy.position, destination.position) < speed * Time.fixedDeltaTime)
 		{
 			setDestination (destination == startPoint ? endPoint : startPoint);
