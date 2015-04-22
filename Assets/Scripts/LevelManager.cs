@@ -7,7 +7,7 @@ using System.Collections;
 public class LevelManager : MonoBehaviour {
 
 	private Vector3 playerSpawnPoint;
-	
+
 	public Powerup[] powerups;
 	public MovingPlatforms[] platforms;
 	public CheckPoint[] checkpoints;
@@ -69,11 +69,17 @@ public class LevelManager : MonoBehaviour {
 		if (next == checkpoints.Length)
 		{
 			next = 0;
+			playerSpawnPoint = mapStart.position;
+			ResetPowerups ();
+			ResetEnemies ();
 		}
-
-		playerSpawnPoint = checkpoints[next].Position();
-		ResetPowerups();
-		ResetEnemies();
+		else
+		{
+			playerSpawnPoint = checkpoints[next].Position();
+			ResetPowerups();
+			ResetEnemies();
+		}
+		
 		return playerSpawnPoint;
 	}
 

@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour {
 		if(x < min.x || x > max.x || y < min.y || y > max.y )
 		{
 			hit = true;
+			invulnerability = false;
 		}
 
 		if(hit)
@@ -132,7 +133,6 @@ public class PlayerController : MonoBehaviour {
             rbody.gravityScale *= -1;
             canChangeGravity = false;
 			gravity = (!gravity);
-			//Lmanager.GravityChange();
 		}
 		
         Debug.Log("Gravity changed!");
@@ -193,6 +193,14 @@ public class PlayerController : MonoBehaviour {
 			Debug.Log("Player took damage");
 			hit = true;
 			canChangeGravity = true;
+		}
+
+		// Damage player
+		if (collider.gameObject.tag == "Death")
+		{
+			Debug.Log("Player took damage");
+			hit = true;
+			invulnerability = false;
 		}
 
 		// Player reaches the end of the level. Change level.
