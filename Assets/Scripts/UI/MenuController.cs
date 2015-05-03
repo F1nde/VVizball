@@ -17,6 +17,15 @@ public class MenuController : MonoBehaviour {
     public GameObject settingsPanel;
     private bool settingsOpen = false;
 
+	public GameObject startPanel;
+	private bool startPanelOpen = false;
+
+	public GameObject storyPanel;
+
+	public GameObject nameField;
+
+	public GameObject greeting;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -26,8 +35,35 @@ public class MenuController : MonoBehaviour {
 
     public void LoadLevel(int level)
     {
+		Debug.Log ("Load level " + level);
         gameManager.LoadLevel(level);
     }
+
+	public void ToggleStartPanel()
+	{
+		if (!startPanelOpen) {
+			Debug.Log ("Opening Start panel.");
+			startPanel.SetActive (true);
+			startPanelOpen = true;
+		} else {
+			Debug.Log ("Closing Start panel.");
+			startPanel.SetActive (false);
+			startPanelOpen = false;
+		}
+	}
+
+	public void openStory()
+	{
+		// Save name
+		gameManager.playerName = nameField.GetComponent<Text>().text;
+		Debug.Log ("Saved player name " + gameManager.playerName);
+
+		ToggleStartPanel (); // Close start panel
+
+		Debug.Log("Opening Story panel.");
+		storyPanel.SetActive(true);
+		greeting.GetComponent<Text> ().text = "Hello, " + gameManager.playerName + "!";
+	}
 
     public void ToggleHighscores ()
     {
