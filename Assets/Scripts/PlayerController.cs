@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
 	public float maxSpeed;
 
     Rigidbody2D rbody;              // Reference to the rigidbody component
-    bool canChangeGravity = true;   // Whether the player is able to change gravity
+    public bool canChangeGravity = true;   // Whether the player is able to change gravity
 
 	public float defPlayerHealth;
 
@@ -265,4 +265,10 @@ public class PlayerController : MonoBehaviour {
 			return false;
 		}
 	}
+
+	public static bool gravityChangeEnabled()
+	{
+		return constantGravityChange;
+	}
+
 }
