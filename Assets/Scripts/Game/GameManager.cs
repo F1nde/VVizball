@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     private int level = 1; // TODO: Adjust this according to level numbers - Cadiac adjusted this before demo 
 
 	public string playerName;
+	public bool debugMode;
 
 	// Use this for initialization
 	void Awake () 

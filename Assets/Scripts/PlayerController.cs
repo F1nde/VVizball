@@ -35,6 +35,11 @@ public class PlayerController : MonoBehaviour {
 	private static double timeInvulnerability = 0.0;
 	private static bool invulnerability = false;
 
+	// Weapons
+	private static Weapon weaponInUse = null;
+	private static Weapon laser = null;
+	private static int lasershots = 0;
+
 	private static SpriteRenderer srenderer;
 
 
@@ -158,18 +163,38 @@ public class PlayerController : MonoBehaviour {
         }
 
         // FOR DEBUGGING
-        if (Input.GetKeyDown(KeyCode.L))
+		if (GameObject.Find ("GameManager").GetComponent<GameManager>().debugMode 
+		    && Input.GetKeyDown(KeyCode.L))
         {
             GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             gameManager.LoadNextLevel();
         }
 
 		// FOR DEBUGGING
-		if (Input.GetKeyDown(KeyCode.Backspace))
+		if (GameObject.Find ("GameManager").GetComponent<GameManager>().debugMode 
+		    && Input.GetKeyDown(KeyCode.Backspace))
 		{
 			// Moves player to next checkpoint
 			transform.position = Lmanager.NextCheckpoint();
 			rbody.velocity = rbody.velocity.normalized * 0;
+		}
+
+		// Using weapons
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			Debug.Log ("Use Weapon");
+			if (weaponInUse != null && weaponInUse == laser)
+			{
+				//weaponInUse.useWeapon();
+				//lasershots = weaponInUse.shotsLeft();
+				if (lasershots > 0) {
+					--lasershots;
+					// Shoot??
+				}
+				if (lasershots == 0) {
+					laser = null;
+					weaponInUse = null; // Change when there are more weapons
+				}
+			}
 		}
 
 		// Check player's max speed
@@ -269,6 +294,31 @@ public class PlayerController : MonoBehaviour {
 	public static bool gravityChangeEnabled()
 	{
 		return constantGravityChange;
+	}
+
+	public static void collectWeapon(string type, Weapon weapon)
+	{
+		if (type == "laser") {
+			if (laser == null)
+				laser = weapon;
+			lasershots += laser.shotsLeft();
+			if (weaponInUse == null)
+				weaponInUse = laser;
+		}
+	}
+
+	public static string currentWeapon()
+	{
+		if (weaponInUse != null && weaponInUse == laser)
+			return "Laser";
+		return null;
+	}
+
+	public static int shotsLeft()
+	{
+		if (weaponInUse != null && weaponInUse == laser)
+			return lasershots;
+		return 0;
 	}
 
 }

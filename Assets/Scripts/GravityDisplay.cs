@@ -32,7 +32,7 @@ public class GravityDisplay : MonoBehaviour
 		bool previousDirection = direction;
 		direction = player.gravity;
 		gravityUnlocked = player.canChangeGravity || PlayerController.gravityChangeEnabled();
-		Debug.Log ("Gravity unlocked " + gravityUnlocked);
+		//Debug.Log ("Gravity unlocked " + gravityUnlocked);
 
 		// Turn image upside down when needed
 		if (direction != previousDirection) {
@@ -44,7 +44,7 @@ public class GravityDisplay : MonoBehaviour
 		// Set image
 		if (!gravityUnlocked) {
 			gameObject.GetComponent<Image>().sprite = sprites[1]; // Gray image
-			Debug.Log ("Gray image");
+			//Debug.Log ("Gray image");
 		}
 		else
 			gameObject.GetComponent<Image>().sprite = sprites[0]; // Normal

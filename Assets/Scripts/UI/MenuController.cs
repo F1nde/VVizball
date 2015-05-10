@@ -26,6 +26,9 @@ public class MenuController : MonoBehaviour {
 
 	public GameObject greeting;
 
+	private bool debugModeOn = false;
+	public Toggle debugCheckbox;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -36,6 +39,7 @@ public class MenuController : MonoBehaviour {
     public void LoadLevel(int level)
     {
 		Debug.Log ("Load level " + level);
+		gameManager.debugMode = debugModeOn;
         gameManager.LoadLevel(level);
     }
 
@@ -99,6 +103,11 @@ public class MenuController : MonoBehaviour {
             settingsOpen = false;
         }
     }
+
+	public void ToggleDebugMode()
+	{
+		debugModeOn = debugCheckbox.isOn;
+	}
 
     public void QuitGame()
     {
