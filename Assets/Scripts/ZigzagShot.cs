@@ -4,22 +4,28 @@
 using UnityEngine;
 using System.Collections;
 
-public class LaserShot : MonoBehaviour
+public class ZigzagShot : MonoBehaviour
 {
 	float speed;
-	float range;
+	float rangeX;
+	float speedY;
+	float rangeY;
 	public Vector3 start;
-
+	
 	public Vector3 direction;
-
-
+	public Vector3 directionY;
+	
+	
 	// Use this for initialization
 	void Start ()
 	{
 		speed = 15f;
-		range = 25f;
+		rangeX = 25f;
+		speedY = 2f;
+		rangeY = 3f;
 		//start = transform.position;
 		direction = Vector3.left;
+		directionY = Vector3.up;
 		renderer.enabled = false;
 		collider2D.enabled = false;
 	}
@@ -27,10 +33,13 @@ public class LaserShot : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		transform.Translate (new Vector3(direction.x * speed * Time.fixedDeltaTime,0,0), Space.World);
-		if (Vector3.Distance (start, transform.position) >= range) {
+		transform.Translate (new Vector3(direction.x * speed * Time.fixedDeltaTime,directionY.y * speed * Time.fixedDeltaTime,0), Space.World);
+		if (Vector3.Distance (start, transform.position) >= rangeX) {
 			renderer.enabled = false;
 			collider2D.enabled = false;
+		}
+		if (Vector3.Distance (start, transform.position) >= rangeY) {
+			directionY *= -1;
 		}
 		Collider2D[] colliders = Physics2D.OverlapPointAll (new Vector2 (transform.position.x, transform.position.y));
 		for (var i = 0; i < colliders.Length; i++) {
@@ -42,9 +51,9 @@ public class LaserShot : MonoBehaviour
 				break;
 			}
 		}
-
+		
 	}
-
+	
 	public void setPosition(Vector3 begin, Vector3 dir)
 	{
 		//Debug.Log ("Set beam position");
@@ -54,10 +63,10 @@ public class LaserShot : MonoBehaviour
 		renderer.enabled = true;
 		collider2D.enabled = true;
 	}
-
+	
 	void OnTriggerEnter2D(Collider2D collider)
 	{
-		// Destroy if the shot hits a platfor of an enemy
+		// Destroy if the shot hits a platform of an enemy
 		bool hit = false;
 		if (collider.tag == "Enemy") {
 			Debug.Log ("Shot hit an enemy!");
@@ -68,10 +77,8 @@ public class LaserShot : MonoBehaviour
 		if (hit) {
 			renderer.enabled = false;
 			collider2D.enabled = false;
+			directionY = Vector3.up;
 		}
 	}
-
-
-
 }
 

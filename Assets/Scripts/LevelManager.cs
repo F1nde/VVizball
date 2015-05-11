@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour {
 	//public MoveEnemy[] enemies;
 	public BasicEnemy[] enemyObjects;
 	public AdvancedEnemy[] advEnemyObjects;
+	public LaserWeapon[] lasers;
+	public ZigzagWeapon[] zigzags;
 	public int next;
 
 	private bool gravity;
@@ -52,6 +54,7 @@ public class LevelManager : MonoBehaviour {
 	{
 		ResetPowerups();
 		ResetEnemies();
+		ResetWeapons ();
 		return playerSpawnPoint;
 	}
 
@@ -72,12 +75,14 @@ public class LevelManager : MonoBehaviour {
 			playerSpawnPoint = mapStart.position;
 			ResetPowerups ();
 			ResetEnemies ();
+			ResetWeapons();
 		}
 		else
 		{
 			playerSpawnPoint = checkpoints[next].Position();
 			ResetPowerups();
 			ResetEnemies();
+			ResetWeapons();
 		}
 		
 		return playerSpawnPoint;
@@ -117,6 +122,17 @@ public class LevelManager : MonoBehaviour {
 		for (var j = 0; j < advEnemyObjects.Length; ++j) 
 		{
 			advEnemyObjects[j].Reset();
+		}
+	}
+
+	// Weapons
+	void ResetWeapons()
+	{
+		for (var i = 0; i < lasers.Length; ++i) {
+			lasers [i].Reset ();
+		}
+		for (var j = 0; j < zigzags.Length; j++) {
+			zigzags [j].Reset ();
 		}
 	}
 

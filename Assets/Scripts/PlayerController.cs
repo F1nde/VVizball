@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour {
 	private static Weapon weaponInUse = null;
 	private static Weapon laser = null;
 	private static int lasershots = 0;
+	private static Weapon zigzag = null;
+	private static int zigzagshots = 0;
 
 	private static SpriteRenderer srenderer;
 
@@ -102,6 +104,11 @@ public class PlayerController : MonoBehaviour {
 				slowMotion = false;
 				timeInvulnerability = 0.0;
 				invulnerability = false;
+				weaponInUse = null;
+				laser = null;
+				lasershots = 0;
+				zigzag = null;
+				zigzagshots = 0;
 			}
 
 			hit = false;
@@ -171,8 +178,8 @@ public class PlayerController : MonoBehaviour {
         }
 
 		// FOR DEBUGGING
-		if (GameObject.Find ("GameManager").GetComponent<GameManager>().debugMode 
-		    && Input.GetKeyDown(KeyCode.Backspace))
+		//GameObject.Find ("GameManager").GetComponent<GameManager>().debugMode && 
+		if (Input.GetKeyDown(KeyCode.Backspace))
 		{
 			// Moves player to next checkpoint
 			transform.position = Lmanager.NextCheckpoint();
@@ -182,19 +189,41 @@ public class PlayerController : MonoBehaviour {
 		// Using weapons
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			Debug.Log ("Use Weapon");
+			Vector3 direction = (rbody.angularVelocity <= 0) ? Vector3.right : Vector3.left;
+			if (!gravity)
+				direction *= -1;
 			if (weaponInUse != null && weaponInUse == laser)
 			{
 				//weaponInUse.useWeapon();
 				//lasershots = weaponInUse.shotsLeft();
 				if (lasershots > 0) {
 					--lasershots;
-					// Shoot??
+					// Shoot
+					weaponInUse.useWeapon(transform.position, direction);
 				}
 				if (lasershots == 0) {
 					laser = null;
-					weaponInUse = null; // Change when there are more weapons
+					weaponInUse = zigzag; // Change when there are more weapons
 				}
 			}
+			if (weaponInUse != null && weaponInUse == zigzag)
+			{
+				if (zigzagshots > 0){
+					--zigzagshots;
+					weaponInUse.useWeapon(transform.position, direction);
+				}
+				if (zigzagshots == 0) {
+					zigzag = null;
+					weaponInUse = laser;
+				}
+			}
+		}
+		// Change weapon
+		if (Input.GetKeyDown (KeyCode.RightShift)) {
+			if (weaponInUse == laser && zigzag != null)
+				weaponInUse = zigzag;
+			else if (weaponInUse == zigzag && laser != null)
+				weaponInUse = laser;
 		}
 
 		// Check player's max speed
@@ -208,7 +237,7 @@ public class PlayerController : MonoBehaviour {
     {
         // Reset gravity bool if player hits a platform
         if (collider.gameObject.tag == "Platform") {
-            Debug.Log("Player hit a platform!");
+            //Debug.Log("Player hit a platform!");
             canChangeGravity = true;
         }
 
@@ -305,12 +334,21 @@ public class PlayerController : MonoBehaviour {
 			if (weaponInUse == null)
 				weaponInUse = laser;
 		}
+		if (type == "zigzag") {
+			if (zigzag == null)
+				zigzag = weapon;
+			zigzagshots += zigzag.shotsLeft();
+			if (weaponInUse == null)
+				weaponInUse = zigzag;
+		}
 	}
 
 	public static string currentWeapon()
 	{
 		if (weaponInUse != null && weaponInUse == laser)
 			return "Laser";
+		if (weaponInUse != null && weaponInUse == zigzag)
+			return "Zigzag";
 		return null;
 	}
 
@@ -318,6 +356,8 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (weaponInUse != null && weaponInUse == laser)
 			return lasershots;
+		if (weaponInUse != null && weaponInUse == zigzag)
+			return zigzagshots;
 		return 0;
 	}
 

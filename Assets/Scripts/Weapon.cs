@@ -21,15 +21,17 @@ public class Weapon : MonoBehaviour
 	}
 
 	// Do things when used
-	/*public virtual void useWeapon()
+	public virtual void useWeapon(Vector3 startPoint, Vector3 dir)
 	{
-	}*/
+	}
 	
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		Debug.Log ("Player collected a weapon!");
-		collect ();
-		state = false;
+		if (other.name == "Player") {
+			Debug.Log ("Player collected a weapon!");
+			collect ();
+			state = false;
+		}
 	}
 
 	public void Reset()

@@ -31,6 +31,11 @@ public class AdvancedEnemy : MonoBehaviour
 			}
 			state = false;
 		}
+		if (other.tag == "Weapon"){
+			Debug.Log ("Enemy shot!");
+			killEnemy();
+			state = false;
+		}
 	}
 	
 	public void Reset()

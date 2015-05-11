@@ -23,11 +23,19 @@ public class BasicEnemy : MonoBehaviour
 	
 	void OnTriggerEnter2D(Collider2D other)
 	{
+		Debug.Log ("Collider name: " + other.name);
 		if (other.name == "Player"){
 			Debug.Log ("Player hit an enemy!");
 			if (PlayerController.hitEnemy ()) {
 				killEnemy ();
 			}
+			state = false;
+		}
+		if (other.name == "Shot"){
+			Debug.Log ("Enemy shot!");
+			killEnemy();
+			Debug.Log (renderer.enabled.ToString() + collider2D.enabled.ToString());
+			// renderer still displays sprite??
 			state = false;
 		}
 	}

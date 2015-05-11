@@ -1,15 +1,15 @@
 // TIE-21106 Software Engineering Methodology, 2015
-// Roni Jaakkola, Marko Tuominen, Noora Männikkö, 2015
+// Roni Jaakkola, Marko Tuominen, Jaakko Husso, Noora Männikkö, 2015
 
 using UnityEngine;
 using System.Collections;
 
-public class LaserWeapon : Weapon
+public class ZigzagWeapon : Weapon
 {
 	private int shots;
-
-	public LaserShot laserBeam;
-
+	
+	public ZigzagShot movingShot;
+	
 	// Use this for initialization
 	void Start ()
 	{
@@ -19,16 +19,16 @@ public class LaserWeapon : Weapon
 	// Update is called once per frame
 	void Update ()
 	{
-	
+		
 	}
-
+	
 	// When collected
 	public override void collect()
 	{
 		base.collect ();
-		PlayerController.collectWeapon ("laser", this);
+		PlayerController.collectWeapon ("zigzag", this);
 	}
-
+	
 	// Do things when used
 	public override void useWeapon(Vector3 startPoint, Vector3 dir)
 	{
@@ -36,14 +36,13 @@ public class LaserWeapon : Weapon
 		if (shots > 0) {
 			Debug.Log ("Shooting"); 
 			//--shots;
-			laserBeam.setPosition(startPoint, dir);
+			movingShot.setPosition(startPoint, dir);
 		}
 	}
-
+	
 	public override int shotsLeft()
 	{
 		return shots;
 	}
-	
 }
 
