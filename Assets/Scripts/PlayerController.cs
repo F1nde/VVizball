@@ -59,7 +59,10 @@ public class PlayerController : MonoBehaviour {
 		gravity = true;
 
 		min = Bounds.bounds.min;
+		min.y = min.y + 9;
+
 		max = Bounds.bounds.max;
+		max.y = max.y - 9;
 
 		srenderer = GetComponent<SpriteRenderer> ();
 	}
