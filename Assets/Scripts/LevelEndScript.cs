@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class LevelEndScript : MonoBehaviour {
 
+    public GameManager gameManager;
     public Leaderboard leaderboard;
 	
 	public GameObject Panel;
@@ -22,6 +23,7 @@ public class LevelEndScript : MonoBehaviour {
 	void Start () {
 		Panel.gameObject.SetActive(false);
 		pause = GameObject.Find("PauseMenu").GetComponent<PauseScript> ();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         leaderboard = GameObject.Find("GameManager").GetComponent<Leaderboard>();
 		Debug.Log (pause == null);
 	}
@@ -50,7 +52,7 @@ public class LevelEndScript : MonoBehaviour {
         double time = GameObject.Find("Score").GetComponent<ScoreDisplay>().getTimer();
 
         doneText.text = "Sending..";
-        StartCoroutine(leaderboard.PostTime(name, 1, time, doneText));
+        StartCoroutine(leaderboard.PostTime(name, gameManager.level, time, doneText));
     }
 	
 	public void exit() {
