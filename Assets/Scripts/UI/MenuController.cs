@@ -12,6 +12,9 @@ public class MenuController : MonoBehaviour {
 
     public GameObject highscoresPanel;
     private bool scoresOpen = false;
+    private int levels = 0;
+    private int levelShowed = 0;
+    public Text levelTitle;
     public Text scores;
 
     public GameObject settingsPanel;
@@ -26,6 +29,8 @@ public class MenuController : MonoBehaviour {
 
 	public GameObject greeting;
 
+    public Slider volumeSlider;
+
 	private bool debugModeOn = false;
 	public Toggle debugCheckbox;
 
@@ -34,6 +39,9 @@ public class MenuController : MonoBehaviour {
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         leaderboard = GameObject.Find("GameManager").GetComponent<Leaderboard>();
+
+        levels = gameManager.levels;
+        levelShowed = 1;
 	}
 
     public void LoadLevel(int level)
@@ -76,9 +84,8 @@ public class MenuController : MonoBehaviour {
             Debug.Log("Opening Highscores panel.");
             highscoresPanel.SetActive(true);
             scoresOpen = true;
-            scores.text = "Loading...";
 
-            StartCoroutine(leaderboard.GetTimes(1, scores));
+            UpdateScores();
         }
         else
         {
@@ -86,6 +93,14 @@ public class MenuController : MonoBehaviour {
             highscoresPanel.SetActive(false);
             scoresOpen = false;
         }
+    }
+
+    private void UpdateScores() 
+    {
+         levelTitle.text = "Level " + levelShowed;
+         scores.text = "Loading...";
+
+         StartCoroutine(leaderboard.GetTimes(levelShowed, scores));
     }
 
     public void ToggleSettings ()
@@ -104,10 +119,31 @@ public class MenuController : MonoBehaviour {
         }
     }
 
+    public void ChangeVolume()
+    {
+        gameManager.SetVolume(volumeSlider.value);
+    }
+
 	public void ToggleDebugMode()
 	{
 		debugModeOn = debugCheckbox.isOn;
 	}
+
+    public void IncreaseLevel()
+    {
+        ++levelShowed;
+        if (levelShowed > levels)
+            levelShowed = 1;
+        UpdateScores();
+    }
+
+    public void DecreaseLevel()
+    {
+        --levelShowed;
+        if (levelShowed < 1)
+            levelShowed = levels;
+        UpdateScores();
+    }
 
     public void QuitGame()
     {
