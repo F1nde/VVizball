@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
 	public string playerName;
 	public bool debugMode;
 
+    private double volumeRatio = 1;
+
 	// Use this for initialization
 	void Awake () 
     {
@@ -63,5 +65,10 @@ public class GameManager : MonoBehaviour {
         {
             Application.LoadLevel(level);
         }
+    }
+
+    public void SetVolume(float newRatio)
+    {
+        volumeRatio = newRatio;
     }
 }

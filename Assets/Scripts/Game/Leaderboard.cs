@@ -24,6 +24,7 @@ public class Leaderboard : MonoBehaviour {
         if (response.error != null)
         {
             Debug.Log("Error while sending time to the server: " + response.error);
+            textToUpdate.text = "Sending failed.";
         }
         else
         {
