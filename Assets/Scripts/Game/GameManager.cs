@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
     public int levels = 3;
 
-    private int level = 1; // TODO: Adjust this according to level numbers - Cadiac adjusted this before demo 
+    public int level = 1; // TODO: Adjust this according to level numbers - Cadiac adjusted this before demo 
 
 	public string playerName;
 	public bool debugMode;
