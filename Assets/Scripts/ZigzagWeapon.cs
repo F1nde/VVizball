@@ -44,5 +44,10 @@ public class ZigzagWeapon : Weapon
 	{
 		return shots;
 	}
+
+	public override bool isShooting(){
+		return movingShot.isShooting ();
+	}
+
 }
 

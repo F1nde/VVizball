@@ -20,7 +20,7 @@ public class ZigzagShot : MonoBehaviour
 	void Start ()
 	{
 		speed = 15f;
-		rangeX = 25f;
+		rangeX = 20f;
 		speedY = 2f;
 		rangeY = 3f;
 		//start = transform.position;
@@ -79,6 +79,10 @@ public class ZigzagShot : MonoBehaviour
 			collider2D.enabled = false;
 			directionY = Vector3.up;
 		}
+	}
+
+	public bool isShooting(){
+		return renderer.enabled;
 	}
 }
 

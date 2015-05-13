@@ -45,5 +45,9 @@ public class LaserWeapon : Weapon
 		return shots;
 	}
 	
+	public override bool isShooting(){
+		return laserBeam.isShooting ();
+	}
+
 }
 

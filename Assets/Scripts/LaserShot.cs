@@ -17,7 +17,7 @@ public class LaserShot : MonoBehaviour
 	void Start ()
 	{
 		speed = 15f;
-		range = 25f;
+		range = 20f;
 		//start = transform.position;
 		direction = Vector3.left;
 		renderer.enabled = false;
@@ -71,7 +71,9 @@ public class LaserShot : MonoBehaviour
 		}
 	}
 
-
+	public bool isShooting(){
+		return renderer.enabled;
+	}
 
 }
 

@@ -181,8 +181,8 @@ public class PlayerController : MonoBehaviour {
         }
 
 		// FOR DEBUGGING
-		//GameObject.Find ("GameManager").GetComponent<GameManager>().debugMode && 
-		if (Input.GetKeyDown(KeyCode.Backspace))
+		if (GameObject.Find ("GameManager").GetComponent<GameManager>().debugMode 
+		    && Input.GetKeyDown(KeyCode.Backspace))
 		{
 			// Moves player to next checkpoint
 			transform.position = Lmanager.NextCheckpoint();
@@ -199,10 +199,9 @@ public class PlayerController : MonoBehaviour {
 			{
 				//weaponInUse.useWeapon();
 				//lasershots = weaponInUse.shotsLeft();
-				if (lasershots > 0) {
+				if (lasershots > 0 && laser != null && !laser.isShooting()) {
 					--lasershots;
-					// Shoot
-					weaponInUse.useWeapon(transform.position, direction);
+					weaponInUse.useWeapon(transform.position, direction); // Shoot
 				}
 				if (lasershots == 0) {
 					laser = null;
@@ -211,9 +210,9 @@ public class PlayerController : MonoBehaviour {
 			}
 			if (weaponInUse != null && weaponInUse == zigzag)
 			{
-				if (zigzagshots > 0){
+				if (zigzagshots > 0 && zigzag != null && !zigzag.isShooting()){
 					--zigzagshots;
-					weaponInUse.useWeapon(transform.position, direction);
+					weaponInUse.useWeapon(transform.position, direction); // Shoot
 				}
 				if (zigzagshots == 0) {
 					zigzag = null;
