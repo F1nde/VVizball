@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour {
     // (loads the menu if the there are no more levels!)
     public void LoadNextLevel()
     {
-        if ((level + 1) >= levels)
+        if ((level + 1) > levels)
         {
             Debug.Log("Error while loading level " + (level + 1) + "! Is the level added to the build?");
             level = 0;
