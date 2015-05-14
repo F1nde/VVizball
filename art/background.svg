@@ -18,7 +18,7 @@
    inkscape:version="0.91 r13725"
    viewBox="0 0 1600 1200"
    sodipodi:docname="background.svg"
-   inkscape:export-filename="E:\OTM\VVizball\art\level1\layer3.png"
+   inkscape:export-filename="E:\OTM\VVizball\art\exit3.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -3988,7 +3988,7 @@
        inkscape:export-ydpi="300" />
     <path
        style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 679.30864,767.95776 3.84489,-4.02167 2.74005,0.0442 -2.3423,2.69583 8.04334,-0.0442 0.0442,2.60746 -8.08754,0 2.07713,2.69585 -2.74003,0 z"
+       d="m 685.45163,761.77057 4.02167,3.84489 -0.0442,2.74005 -2.69583,-2.3423 0.0442,8.04334 -2.60746,0.0442 0,-8.08754 -2.69585,2.07713 0,-2.74003 z"
        id="path4735"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccccc"

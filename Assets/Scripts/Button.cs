@@ -6,7 +6,7 @@ using System.Collections;
 
 public class Button : MonoBehaviour {
 
-	public bool pushed;
+	public bool pushed = false;
 
 	//Sound effects
 	enum Sounds {
@@ -25,10 +25,12 @@ public class Button : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		SoundManager.instance.PlaySingle((int)Sounds.CHECKPOINT);
-		Debug.Log("Player pushed button!");
-		pushed = true;
-		spriteRenderer.color = Color.cyan;
+		if (!pushed) {
+			SoundManager.instance.PlaySingle((int)Sounds.CHECKPOINT);
+			Debug.Log("Player pushed button!");
+			pushed = true;
+			spriteRenderer.color = Color.cyan;
+		}
 	}
 
 	public bool State()
