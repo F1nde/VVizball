@@ -9,6 +9,7 @@ public class PauseScript : MonoBehaviour {
 	public GameObject Panel;
 	private bool paused = false;
 	private bool available = true;
+	private float previousTimeScale = 1.0F;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +20,8 @@ public class PauseScript : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Escape) && !paused && available) {
 			Panel.gameObject.SetActive (true);
-			Time.timeScale = 0;
+			previousTimeScale = Time.timeScale;
+			Time.timeScale = 0.0F;
 			paused = true;
 		} else if (Input.GetKeyDown (KeyCode.Escape) && paused && available) {
 			resume ();
@@ -28,7 +30,7 @@ public class PauseScript : MonoBehaviour {
 
 	public void resume() {
 		Panel.gameObject.SetActive(false);
-		Time.timeScale = 1;
+		Time.timeScale = previousTimeScale;
 		paused = false;
 	}
 
