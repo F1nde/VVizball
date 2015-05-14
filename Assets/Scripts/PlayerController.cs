@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 	private static bool hit;
 
 	public bool gravity;
+	private static double gravityCooldown= 0.0;
 
 	public static int playerDeaths = 0;
 
@@ -129,6 +130,9 @@ public class PlayerController : MonoBehaviour {
 			hit = false;
 		}
 
+		//Cooldown of gravity change is reduced every update, if below 0 change is available.
+		gravityCooldown -= Time.deltaTime;
+
 		timeGravity -= Time.deltaTime;
 		if (timeGravity < 0.0) 
 		{
@@ -155,11 +159,12 @@ public class PlayerController : MonoBehaviour {
 
     void ChangeGravity()
     {
-        if (canChangeGravity || constantGravityChange)
+        if (gravityCooldown <= 0 && (canChangeGravity || constantGravityChange))
         {
             rbody.gravityScale *= -1;
             canChangeGravity = false;
 			gravity = (!gravity);
+			gravityCooldown = 0.1;
 		}
 		
         Debug.Log("Gravity changed!");
