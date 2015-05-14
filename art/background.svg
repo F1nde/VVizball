@@ -159,9 +159,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.898046"
-     inkscape:cx="721.16755"
-     inkscape:cy="452.98057"
+     inkscape:zoom="11.659918"
+     inkscape:cx="685.20477"
+     inkscape:cy="429.10056"
      inkscape:current-layer="layer6"
      inkscape:document-units="px"
      showgrid="false"
@@ -3895,5 +3895,123 @@
        sodipodi:type="star"
        inkscape:export-xdpi="211.18712"
        inkscape:export-ydpi="211.18712" />
+    <rect
+       style="opacity:1;fill:#013f14;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4745"
+       width="4.1844568"
+       height="4.9181566"
+       x="-673.56494"
+       y="-761.60455"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"
+       transform="scale(-1,-1)" />
+    <rect
+       rx="1.4"
+       y="760.50555"
+       x="664.39417"
+       height="16.079927"
+       width="44.314758"
+       id="rect4743"
+       style="opacity:1;fill:#013f14;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <rect
+       transform="scale(-1,-1)"
+       inkscape:export-ydpi="300"
+       inkscape:export-xdpi="300"
+       y="-761.60455"
+       x="-702.38159"
+       height="4.9181566"
+       width="4.1844568"
+       id="rect4751"
+       style="opacity:1;fill:#013f14;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       style="opacity:1;fill:#005a1b;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect4715"
+       width="44.314758"
+       height="16.079927"
+       x="664.15161"
+       y="760.08105"
+       rx="1.4"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect4721"
+       width="8.522542"
+       height="11.739251"
+       x="666.13324"
+       y="761.5813"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 666.1178,773.30258 1.5026,1.5026 9.05981,0 -2.06373,-1.54412 z"
+       id="path4725"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#005a1b;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 667.78125,773.0625 2.03125,-5.03125 -0.90625,-2.625 -1.125,1.75 -1.90625,0 -0.0312,-1.0625 1.46875,-0.0312 1.03125,-1.4375 0.34375,-0.375 0.28125,-0.15625 3.125,0 0.25,0.15625 1.28125,2.34375 -0.0625,0.28125 -0.21875,0.21875 -0.46875,0.0625 -0.40625,-0.28125 -0.8125,-1.5 -0.46875,0 1.46875,2.96875 0.125,2.75 2.15625,-0.0312 0.5625,0.9375 -3.71875,0.0625 -0.25,-0.3125 -0.46875,-2.90625 -1.6875,4.09375 -0.5,0.25 z"
+       id="path4727"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccc"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <ellipse
+       style="opacity:1;fill:#005a1b;fill-opacity:1;stroke:#ffffff;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4729"
+       cx="669"
+       cy="763.10938"
+       rx="1.0625"
+       ry="1.046875"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <rect
+       style="opacity:1;fill:#005a1b;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4731"
+       width="1.46875"
+       height="3.71875"
+       x="664.65436"
+       y="764.58649"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#005a1b;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 667.97284,773.43783 1.61309,1.5468 1.23743,-0.0884 -1.41421,-1.25953 -0.46404,-0.17677 z"
+       id="path4733"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 679.30864,767.95776 3.84489,-4.02167 2.74005,0.0442 -2.3423,2.69583 8.04334,-0.0442 0.0442,2.60746 -8.08754,0 2.07713,2.69585 -2.74003,0 z"
+       id="path4735"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccc"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="694.19434"
+       y="766.71252"
+       id="text4737"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan4739"
+         x="694.19434"
+         y="766.71252"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;font-family:Verdana;-inkscape-font-specification:Verdana">FIRE</tspan><tspan
+         sodipodi:role="line"
+         x="694.19434"
+         y="772.96252"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;font-family:Verdana;-inkscape-font-specification:Verdana"
+         id="tspan4741">EXIT</tspan></text>
   </g>
 </svg>
