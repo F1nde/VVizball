@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour {
             rbody.gravityScale *= -1;
             canChangeGravity = false;
 			gravity = (!gravity);
-			gravityCooldown = 0.1;
+			gravityCooldown = 0.2;
 		}
 		
         Debug.Log("Gravity changed!");
