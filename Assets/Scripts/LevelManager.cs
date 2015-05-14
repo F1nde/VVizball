@@ -23,6 +23,19 @@ public class LevelManager : MonoBehaviour {
 	public PlayerController player;
 	public Transform mapStart;
 
+	//Sound effects
+	enum Sounds {
+		FLOORHIT1 = 0,
+		FLOORHIT2 = 1,
+		FLOORHIT3 = 2,
+		COIN = 3,
+		DAMAGE = 4,
+		LASER = 5,
+		POWERUP = 6,
+		CHECKPOINT = 7,
+		MOUSEOVER = 8
+	}
+
 	void Start () 
 	{
 		playerSpawnPoint = mapStart.position;
@@ -45,6 +58,7 @@ public class LevelManager : MonoBehaviour {
 	{
 		if (playerSpawnPoint != checkPoint)
 		{
+			SoundManager.instance.PlaySingle((int)Sounds.CHECKPOINT);
 			playerSpawnPoint = checkPoint;
 		}
 	}

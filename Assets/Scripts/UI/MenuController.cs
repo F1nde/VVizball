@@ -34,6 +34,19 @@ public class MenuController : MonoBehaviour {
 	private bool debugModeOn = false;
 	public Toggle debugCheckbox;
 
+	//Sound effects
+	enum Sounds {
+		FLOORHIT1 = 0,
+		FLOORHIT2 = 1,
+		FLOORHIT3 = 2,
+		COIN = 3,
+		DAMAGE = 4,
+		LASER = 5,
+		POWERUP = 6,
+		CHECKPOINT = 7,
+		MOUSEOVER = 8
+	}
+
 	// Use this for initialization
 	void Start () 
     {

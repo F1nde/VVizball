@@ -6,6 +6,19 @@ using System.Collections;
 
 public class BasicCollectible : Powerup
 {
+	//Sound effects
+	enum Sounds {
+		FLOORHIT1 = 0,
+		FLOORHIT2 = 1,
+		FLOORHIT3 = 2,
+		COIN = 3,
+		DAMAGE = 4,
+		LASER = 5,
+		POWERUP = 6,
+		CHECKPOINT = 7,
+		LEVELEND = 8
+	}
+
 	private int scoreValue; // Score gained when collected
 
 	// Use this for initialization
@@ -24,6 +37,7 @@ public class BasicCollectible : Powerup
 	public override void collect()
 	{
 		base.collect ();
+		SoundManager.instance.PlaySingle((int)Sounds.COIN);
 		PlayerController.playerScore += scoreValue;
 	}
 	

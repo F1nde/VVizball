@@ -42,8 +42,20 @@ public class PlayerController : MonoBehaviour {
 	private static Weapon zigzag = null;
 	private static int zigzagshots = 0;
 
-	private static SpriteRenderer srenderer;
+	//Sound effects
+	enum Sounds {
+		FLOORHIT1 = 0,
+		FLOORHIT2 = 1,
+		FLOORHIT3 = 2,
+		COIN = 3,
+		DAMAGE = 4,
+		LASER = 5,
+		POWERUP = 6,
+		CHECKPOINT = 7,
+		LEVELEND = 8
+	}
 
+	private static SpriteRenderer srenderer;
 
 	public BoxCollider2D Bounds;
 
@@ -201,6 +213,7 @@ public class PlayerController : MonoBehaviour {
 				//lasershots = weaponInUse.shotsLeft();
 				if (lasershots > 0 && laser != null && !laser.isShooting()) {
 					--lasershots;
+					SoundManager.instance.PlaySingle((int)Sounds.LASER);
 					weaponInUse.useWeapon(transform.position, direction); // Shoot
 				}
 				if (lasershots == 0) {
@@ -212,6 +225,7 @@ public class PlayerController : MonoBehaviour {
 			{
 				if (zigzagshots > 0 && zigzag != null && !zigzag.isShooting()){
 					--zigzagshots;
+					SoundManager.instance.PlaySingle((int)Sounds.LASER);
 					weaponInUse.useWeapon(transform.position, direction); // Shoot
 				}
 				if (zigzagshots == 0) {
@@ -241,11 +255,13 @@ public class PlayerController : MonoBehaviour {
         if (collider.gameObject.tag == "Platform") {
             //Debug.Log("Player hit a platform!");
             canChangeGravity = true;
+			SoundManager.instance.PlaySingle((int)Sounds.FLOORHIT3);
         }
 
 		// Damage player
 		if (collider.gameObject.tag == "Damage")
 		{
+			SoundManager.instance.PlaySingle((int)Sounds.DAMAGE);
 			Debug.Log("Player took damage");
 			hit = true;
 			canChangeGravity = true;
@@ -254,6 +270,7 @@ public class PlayerController : MonoBehaviour {
 		// Damage player
 		if (collider.gameObject.tag == "Death")
 		{
+			SoundManager.instance.PlaySingle((int)Sounds.DAMAGE);
 			Debug.Log("Player took damage");
 			hit = true;
 			invulnerability = false;
@@ -264,33 +281,37 @@ public class PlayerController : MonoBehaviour {
 			Debug.Log ("Level end point");
 			//GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 			//gameManager.LoadNextLevel();
+			SoundManager.instance.PlaySingle((int)Sounds.LEVELEND);
 			LevelEndScript endScreen = GameObject.Find("EndScreen").GetComponent<LevelEndScript>();
 			endScreen.openEndScreen();
 		}
 
 		if (collider.gameObject.tag == "GravityLock")
 		{
+			SoundManager.instance.PlaySingle((int)Sounds.FLOORHIT2);
 			Debug.Log("Gravity locked");
 			canChangeGravity = false;
 		}
 
     }
-
 	public static void collectPowerup(string type, float duration, Color color)
 	{
 		Debug.Log (color);
 		if (type == "gravity") {
+			SoundManager.instance.PlaySingle((int)Sounds.POWERUP);
 			Debug.Log ("Gravity unlocked by powerup");
 			constantGravityChange = true;
 			timeGravity = duration;
 			srenderer.color = color;
 		} else if (type == "time") {
+			SoundManager.instance.PlaySingle((int)Sounds.POWERUP);
 			Debug.Log ("Slow motion by powerup");
 			Time.timeScale = 0.5f;
 			slowMotion = true;
 			timeSlowMotion = duration;
 			srenderer.color = color;
 		} else if (type == "invulnerability") {
+			SoundManager.instance.PlaySingle((int)Sounds.POWERUP);
 			Debug.Log ("Invulnerability by powerup");
 			invulnerability = true;
 			timeInvulnerability = duration;
@@ -318,6 +339,7 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			// Player dies
 			hit = true;
+			SoundManager.instance.PlaySingle((int)Sounds.DAMAGE);
 			return false;
 		}
 	}
