@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 	public string playerName;
 	public bool debugMode;
 
-    private double volumeRatio = 1;
+    private float volumeRatio = 1.0F;
 
 	// Use this for initialization
 	void Awake () 
@@ -70,5 +70,6 @@ public class GameManager : MonoBehaviour {
     public void SetVolume(float newRatio)
     {
         volumeRatio = newRatio;
+		SoundManager.instance.setVolume (newRatio);
     }
 }

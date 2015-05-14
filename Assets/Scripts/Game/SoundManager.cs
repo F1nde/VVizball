@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿// TIE-21106 Software Engineering Methodology, 2015
+// Roni Jaakkola, Marko Tuominen, Jaakko Husso, Noora Männikkö, 2015
+
+using UnityEngine;
 using System.Collections;
 
 public class SoundManager : MonoBehaviour 
@@ -6,6 +9,8 @@ public class SoundManager : MonoBehaviour
 	public AudioSource audioSource;
 	public static SoundManager instance = null;     //Allows other scripts to call functions from SoundManager.
 	public AudioClip[] audioEffects;
+
+	private float volume = 1.0F;
 
 	void Awake ()
 	{
@@ -27,8 +32,12 @@ public class SoundManager : MonoBehaviour
 	public void PlaySingle(int clip)
 	{
 		if (clip >= 0 && clip < audioEffects.Length) {
-			audioSource.PlayOneShot (audioEffects [clip]);
+			audioSource.PlayOneShot (audioEffects [clip], volume);
 		}
+	}
+
+	public void setVolume(float volumeRatio){
+		volume = volumeRatio;
 	}
 }
 
